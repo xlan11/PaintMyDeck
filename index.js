@@ -1,32 +1,22 @@
-// let weather = {
-//     "apiKey" : "25419fc66df6465e6d2c90e8f096f2f5",
-//     "fetchWeather" : function(){
-//         fetch('https://api.openweathermap.org/data/2.5/weather?q=Belfast&units=metric&appid='
-//         + this.apiKey
-//         )
-//         .then(response => response.json())
-//         .then(data => console.log(data));
-//     },
 
-//     // displayWeather : function(data){
-//     //     const {name} = data
-//     //     const {icon, description} = data.weather[0]
-//     //     const {temp, humidity} = data.main
-//     //     const {speed} = data.wind
-//     //     console.log (name, icon, description, temp, humidity, speed)
 
-//     // }
-// }
+//weather
+//fetch('https://api.openweathermap.org/data/2.5/weather?q=Belfast&cnt=5&units=metric&appid=25419fc66df6465e6d2c90e8f096f2f5')
 
-fetch('https://api.openweathermap.org/data/2.5/weather?q=Belfast&cnt=5&units=metric&appid=25419fc66df6465e6d2c90e8f096f2f5')
+//forecast
+fetch('https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=-94.04&exclude=hourly,minutely&appid=25419fc66df6465e6d2c90e8f096f2f5')
   .then(response => response.json())
   .then(data => 
   {
         console.log(data)
-        const { main, name, sys, weather} = data
-        let currentTemp = (document.getElementById("display-temp"))
+        const {daily} = data
+        let currentPop = document.getElementById("display-pop")
+
         function temp(){
-            currentTemp.innerHTML = Math.floor(data.main.temp)
+            daily.forEach(pop => {
+              currentPop.innerHTML += `<li> ${data.daily[0].pop} </li>`
+            });
+
   }
 temp()
 })
