@@ -1,7 +1,7 @@
 //Los Angeles
-fetch('https://api.openweathermap.org/data/2.5/onecall?lat=34.05&lon=118.24&units=metric&exclude=hourly,minutely&appid=25419fc66df6465e6d2c90e8f096f2f5')
+//fetch('https://api.openweathermap.org/data/2.5/onecall?lat=34.05&lon=118.24&units=metric&exclude=hourly,minutely&appid=25419fc66df6465e6d2c90e8f096f2f5')
 //belfast
-//fetch('https://api.openweathermap.org/data/2.5/onecall?lat=54.59&lon=5.93&units=metric&exclude=hourly,minutely&appid=25419fc66df6465e6d2c90e8f096f2f5')
+fetch('https://api.openweathermap.org/data/2.5/onecall?lat=54.59&lon=5.93&units=metric&exclude=hourly,minutely&appid=25419fc66df6465e6d2c90e8f096f2f5')
 
   .then(response => response.json())
 
