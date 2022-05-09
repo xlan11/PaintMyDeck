@@ -1,26 +1,42 @@
+//Los Angeles
+fetch('https://api.openweathermap.org/data/2.5/onecall?lat=34.05&lon=118.24&units=metric&exclude=hourly,minutely&appid=25419fc66df6465e6d2c90e8f096f2f5')
+//belfast
+//fetch('https://api.openweathermap.org/data/2.5/onecall?lat=54.59&lon=5.93&units=metric&exclude=hourly,minutely&appid=25419fc66df6465e6d2c90e8f096f2f5')
 
-
-
-fetch('https://api.openweathermap.org/data/2.5/onecall?lat=55.12&lon=6.55&&units=metric&exclude=hourly,minutely&appid=25419fc66df6465e6d2c90e8f096f2f5')
   .then(response => response.json())
-  .then(data => 
+
+  .then(data =>
+
   {
+
         console.log(data)
-        const {daily} = data
-        const weeklyWeather = daily
+        const {daily, current, weather} = data
+        // const icon = `https://openweathermap.org/img/wn/${daily.weather[0]["icon"]}@2x.png`
+        let currentPop = document.getElementById("display-pop")
         const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
         const d = new Date();
-        let day = weekday[d.getDay()];
+        let todayNumber = d.getDay();
+        let today = "";
+        
 
-
-        let currentPop = document.getElementById("display-pop")
-
-        function precipitation(){
-            weeklyWeather.forEach(day => {
-              currentPop.innerHTML += `<li> ${d} ${day.pop * 100} %</li>`
+        function GetDailyChanceOfRain(weeklyWeather){
+          weeklyWeather.forEach(day => {     
+            timestamp = day.dt
+            test = new Date(timestamp  * 1000 );
+            test.getDay();
+            
+              currentPop.innerHTML +=
+              `
+              <div id="weather-card">
+                <li>
+                  <span id="weather-day"><h2>${weekday[test.getDay()]}</h2></span>
+                  <span id="weather-temp">Temp: ${(Math.floor(day.temp.day))}° (Min: ${(Math.floor(day.temp.min))}° - Max: ${(Math.floor(day.temp.max))})°<br/></span>  
+                  <span id="weather-pop">Precipitation chance: ${day.pop * 100}%</span>
+                  <!--<span id="weather-icon"><img src="https://openweathermap.org/img/wn/${daily[0].weather[0].icon}.png"/></span>-->
+                </li>
+              </div>
+              `
             });
-
   }
-precipitation()
+  GetDailyChanceOfRain(daily)
 })
-

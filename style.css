@@ -1,15 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap');
+
 body{
-    background-color:#423E37;
+    /*background-color:#423E37;*/
+    background-color:#EDEBD7;
 }
 p{
     color:#EDEBD7;
 }
 h1{
     color:#E3B23C;
+    font-family: 'Roboto', sans-serif;
 }
 
 #container{
     padding:50px;
     margin:0;
 
+}
+ul{
+    list-style:none;
+    display:flex;
+    flex-wrap:wrap;
+
+}
+
+ul li {
+color:#fff;
+padding:10px;
+font-family: 'Open Sans', sans-serif;
+
+}
+
+#weather-card{
+    background-color:#E3B23C;
+    padding:10px;
+    margin:5px;
+    border-radius:5px;
+    height:200px;
+    width:400px;
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
