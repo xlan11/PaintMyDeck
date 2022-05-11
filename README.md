@@ -1,3 +1,3 @@
 # PaintMyDeck
 
-Using the weather API - can I find out when a good time is to paint my deck?
+Using the Openweather API - can I find out when a good time is to paint my deck?
