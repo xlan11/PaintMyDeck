@@ -11,7 +11,6 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=54.59&lon=5.93&units=
 
         console.log(data)
         const {daily, current, weather, sunrise, sunset} = data
-        // const icon = `https://openweathermap.org/img/wn/${daily.weather[0]["icon"]}@2x.png`
         let weatherCard = document.getElementById("display-weather-card")
         const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
         const d = new Date();

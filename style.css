@@ -3,6 +3,7 @@
 body{
     /*background-color:#423E37;*/
     background-color:#EDEBD7;
+    font-family: 'Open Sans', sans-serif;
 }
 p{
     color:#EDEBD7;
@@ -29,13 +30,13 @@ ul{
 ul li {
 color:#423e37;
 padding: 15px;
-font-family: 'Open Sans', sans-serif;
+
 }
 
 #weather-card{
     background-color:#E3B23C;
     padding:10px;
-    margin:5px;
+    margin:15px;
     border-radius:5px;
     height:100%;
     width:350px;
@@ -44,4 +45,25 @@ font-family: 'Open Sans', sans-serif;
 
 #weather-icon{
     float:right;
+}
+
+button {
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight:bold;
+    
+}
+
+input {
+    -webkit-appearance: none;
+}
+
+button,input {
+    font-size:16px;
+    border-top: none;
+    border-left: none;
+    border-right: none; 
+    border-bottom:#E3B23C 5px solid;
+    padding:20px;
+    background-color:#EDEBD7
 }
