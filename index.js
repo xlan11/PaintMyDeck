@@ -1,10 +1,11 @@
-//Los Angeles
+//Los Angeles onecall api
 //fetch('https://api.openweathermap.org/data/2.5/onecall?lat=34.05&lon=118.24&units=metric&exclude=hourly,minutely&appid=25419fc66df6465e6d2c90e8f096f2f5')
-//belfast
+//belfast onecall api
 fetch('https://api.openweathermap.org/data/2.5/onecall?lat=54.59&lon=5.93&units=metric&exclude=hourly,minutely&appid=25419fc66df6465e6d2c90e8f096f2f5')
+//ballymoney via cityname
+// fetch ('https://api.openweathermap.org/data/2.5/forecast?q=Ballymoney&appid=25419fc66df6465e6d2c90e8f096f2f5')
 
   .then(response => response.json())
-
   .then(data =>
 
   {
@@ -34,12 +35,19 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=54.59&lon=5.93&units=
               let sunsetMinutes = sunsetTime.getMinutes()
               let sunsetTimeFormatted = sunsetHours + ":" + sunsetMinutes
             
+              if ((day.pop * 100) < 30){
+                paintDeckYes = "Today would be a good day to paint!"
+              }
+                else{
+                paintDeckYes = ""
+              }
               weatherCard.innerHTML +=
               `
               <div id="weather-card">
                 <li>
                   <span id="weather-icon"><img src="https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png"/></span>
-                  <span id="weather-day"><h2>${weekday[dayOfWeek.getDay()]}</h2></span>
+                  <span id="weather-day"><h2>${weekday[dayOfWeek.getDay()]} </h2></span>
+                  <span id="yes-paint"><p>${paintDeckYes}</p></span><br/>
                   <span id="weather-temp">Temp: ${(Math.floor(day.temp.day))}° (Min: ${(Math.floor(day.temp.min))}° - Max: ${(Math.floor(day.temp.max))})°<br/></span>  
                   <span id="weather-pop">Precipitation chance: ${(Math.floor(day.pop * 100))}%<br/></span>
                   <span id="weather-sunrise">Sunrise: ${sunriseTimeFormatted} <br/></span>
