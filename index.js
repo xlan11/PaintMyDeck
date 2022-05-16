@@ -39,7 +39,7 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=54.59&lon=5.93&units=
               `
               <div id="weather-card">
                 <li>
-                  <span id="weather-icon"><img src="https://openweathermap.org/img/wn/${daily[0].weather[0].icon}.png"/></span>
+                  <span id="weather-icon"><img src="https://openweathermap.org/img/wn/${daily[0].weather[0].icon}@2x.png"/></span>
                   <span id="weather-day"><h2>${weekday[test.getDay()]}</h2></span>
                   <span id="weather-temp">Temp: ${(Math.floor(day.temp.day))}° (Min: ${(Math.floor(day.temp.min))}° - Max: ${(Math.floor(day.temp.max))})°<br/></span>  
                   <span id="weather-pop">Precipitation chance: ${(Math.floor(day.pop * 100))}%<br/></span>
