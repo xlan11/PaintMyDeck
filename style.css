@@ -12,23 +12,24 @@ h1{
     font-family: 'Roboto', sans-serif;
 }
 
+h2{
+    margin-top:0;
+}
+
 #container{
     padding:50px;
     margin:0;
-
 }
 ul{
     list-style:none;
     display:flex;
     flex-wrap:wrap;
-
 }
 
 ul li {
-color:#fff;
-padding:10px;
+color:#423e37;
+padding: 15px;
 font-family: 'Open Sans', sans-serif;
-
 }
 
 #weather-card{
@@ -36,7 +37,11 @@ font-family: 'Open Sans', sans-serif;
     padding:10px;
     margin:5px;
     border-radius:5px;
-    height:200px;
+    height:100%;
     width:400px;
     box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+#weather-icon{
+    float:right;
 }
