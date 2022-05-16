@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap');
 
+* {
+    margin: 0;
+    padding: 0;
+  }
+
 body{
     /*background-color:#423E37;*/
     background-color:#EDEBD7;
@@ -18,24 +23,26 @@ h2{
 }
 
 #container{
-    padding:50px;
     margin:0;
 }
 ul{
     list-style:none;
     display:flex;
     flex-wrap:wrap;
+    text-align: center;
+    justify-content: center;
 }
 
 ul li {
 color:#423e37;
+font-size:12px;
 padding: 15px;
+text-align:left;
 
 }
 
 #weather-card{
     background-color:#E3B23C;
-    padding:10px;
     margin:15px;
     border-radius:5px;
     height:100%;
@@ -50,20 +57,40 @@ padding: 15px;
 button {
     cursor: pointer;
     text-transform: uppercase;
+    letter-spacing: 1px;
     font-weight:bold;
-    
+    border: 1px solid #EDEBD7;
+    background-color:#EDEBD7;
+}
+
+button:hover{
+    background-color:#E3B23C;
+    border: 1px solid #423e37;
 }
 
 input {
     -webkit-appearance: none;
+    border-left: 0;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 1px solid #EDEBD7;
+    background-color:#E3B23C;
+}
+::placeholder{
+    color:#000;
+    letter-spacing:1px;
 }
 
 button,input {
     font-size:16px;
-    border-top: none;
-    border-left: none;
-    border-right: none; 
-    border-bottom:#E3B23C 5px solid;
-    padding:20px;
-    background-color:#EDEBD7
+    padding:10px;
+    
+    
+}
+
+.top-banner{
+    background-color:#E3B23C;
+    display:flex;
+    justify-content: center;
+    padding: 10px 0 10px 0px;
 }
