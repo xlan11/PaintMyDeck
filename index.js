@@ -25,7 +25,7 @@ function getWeatherForecast(weeklyWeather) {
     const sunsetTime = new Date(day.sunset * 1000);
     let shouldPaintDeck = "";
 
-    if (day.pop * 100 < 30) {
+    if (day.pop * 100 < 25) {
       shouldPaintDeck = "Today would be a good day to paint!";
     }
 
@@ -36,7 +36,7 @@ function getWeatherForecast(weeklyWeather) {
       tempCurrent: Math.floor(day.temp.day),
       tempMin: Math.floor(day.temp.min),
       tempMax: Math.floor(day.temp.max),
-      precipitationChange: Math.floor(day.pop * 100),
+      precipitationChance: Math.floor(day.pop * 100),
       sunriseTime: sunriseTime.toLocaleTimeString("en-US", dateFormatOptions),
       sunsetTime: sunsetTime.toLocaleTimeString("en-US", dateFormatOptions),
     });
@@ -50,7 +50,7 @@ function generateHtml({
   tempCurrent,
   tempMin,
   tempMax,
-  precipitationChange,
+  precipitationChance,
   sunriseTime,
   sunsetTime,
 }) {
@@ -61,7 +61,7 @@ function generateHtml({
         <span class="weather-day"><h2>${dayOfWeek}</h2></span>
         <span class="yes-paint"><p>${shouldPaintDeck}</p></span><br/>
         <span class="weather-temp">Temp: ${tempCurrent}° (Min: ${tempMin}° - Max: ${tempMax})°<br/></span>  
-        <span class="weather-pop">Precipitation chance: ${precipitationChange}%<br/></span>
+        <span class="weather-pop">Precipitation chance: ${precipitationChance}%<br/></span>
         <span class="weather-sunrise">Sunrise: ${sunriseTime} <br/></span>
         <span class="weather-sunset">Sunset: ${sunsetTime}</span>
       </li>
