@@ -1,61 +1,70 @@
-//Los Angeles onecall api
-//fetch('https://api.openweathermap.org/data/2.5/onecall?lat=34.05&lon=118.24&units=metric&exclude=hourly,minutely&appid=25419fc66df6465e6d2c90e8f096f2f5')
-//belfast onecall api
-fetch('https://api.openweathermap.org/data/2.5/onecall?lat=54.59&lon=5.93&units=metric&exclude=hourly,minutely&appid=25419fc66df6465e6d2c90e8f096f2f5')
-//ballymoney via cityname
-// fetch ('https://api.openweathermap.org/data/2.5/forecast?q=Ballymoney&appid=25419fc66df6465e6d2c90e8f096f2f5')
+const apiUrl =
+  "https://api.openweathermap.org/data/2.5/onecall?lat=54.59&lon=5.93&units=metric&exclude=hourly,minutely&appid=25419fc66df6465e6d2c90e8f096f2f5";
 
-  .then(response => response.json())
-  .then(data =>
+const dateFormatter = new Intl.DateTimeFormat("en-US", { weekday: "long" });
 
-  {
+const dateFormatOptions = {
+  timeZone: "GMT",
+  timeStyle: "short",
+  hour12: false,
+};
 
-        console.log(data)
-        const {daily, current, weather, sunrise, sunset} = data
-        let weatherCard = document.getElementById("display-weather-card")
-        const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-        const d = new Date();
-        let todayNumber = d.getDay();
-        let today = "";
-        
+fetch(apiUrl)
+  .then((response) => response.json())
+  .then((data) => {
+    const { daily, current, weather, sunrise, sunset } = data;
+    const weatherCard = document.getElementById("display-weather-card");
+    const cards = getWeatherForecast(daily);
+    weatherCard.innerHTML += cards.join(" ");
+  });
 
-        function GetWeatherForecast(weeklyWeather){
-          weeklyWeather.forEach(day => {     
-            timestamp = day.dt
-            dayOfWeek = new Date(timestamp  * 1000 );
-            dayOfWeek.getDay();
+function getWeatherForecast(weeklyWeather) {
+  return weeklyWeather.map((day) => {
+    const currentDate = new Date(day.dt * 1000);
+    const sunriseTime = new Date(day.sunrise * 1000);
+    const sunsetTime = new Date(day.sunset * 1000);
+    let shouldPaintDeck = "";
 
-            sunriseTime = new Date(day.sunrise * 1000)
-              let sunriseHours = sunriseTime.getHours()
-              let sunriseMinutes = sunriseTime.getMinutes()
-              let sunriseTimeFormatted = "0" + sunriseHours + ":" + sunriseMinutes
+    if (day.pop * 100 < 30) {
+      shouldPaintDeck = "Today would be a good day to paint!";
+    }
 
-            sunsetTime = new Date(day.sunset * 1000)
-              let sunsetHours = sunsetTime.getHours()
-              let sunsetMinutes = sunsetTime.getMinutes()
-              let sunsetTimeFormatted = sunsetHours + ":" + sunsetMinutes
-            
-              if ((day.pop * 100) < 30){
-                paintDeckYes = "Today would be a good day to paint!"
-              }
-                else{
-                paintDeckYes = ""
-              }
-              weatherCard.innerHTML +=
-              `
-              <div id="weather-card">
-                <li>
-                  <span id="weather-icon"><img src="https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png"/></span>
-                  <span id="weather-day"><h2>${weekday[dayOfWeek.getDay()]} </h2></span>
-                  <span id="yes-paint"><p>${paintDeckYes}</p></span><br/>
-                  <span id="weather-temp">Temp: ${(Math.floor(day.temp.day))}° (Min: ${(Math.floor(day.temp.min))}° - Max: ${(Math.floor(day.temp.max))})°<br/></span>  
-                  <span id="weather-pop">Precipitation chance: ${(Math.floor(day.pop * 100))}%<br/></span>
-                  <span id="weather-sunrise">Sunrise: ${sunriseTimeFormatted} <br/></span>
-                  <span id="weather-sunset">Sunset: ${sunsetTimeFormatted}</span>
-                </li>
-              </div>
-              `
-            });
-  }
-  GetWeatherForecast(daily)
-})
+    return generateHtml({
+      weatherIcon: day.weather[0].icon,
+      dayOfWeek: dateFormatter.format(currentDate),
+      shouldPaintDeck,
+      tempCurrent: Math.floor(day.temp.day),
+      tempMin: Math.floor(day.temp.min),
+      tempMax: Math.floor(day.temp.max),
+      precipitationChange: Math.floor(day.pop * 100),
+      sunriseTime: sunriseTime.toLocaleTimeString("en-US", dateFormatOptions),
+      sunsetTime: sunsetTime.toLocaleTimeString("en-US", dateFormatOptions),
+    });
+  });
+}
+
+function generateHtml({
+  weatherIcon,
+  dayOfWeek,
+  shouldPaintDeck,
+  tempCurrent,
+  tempMin,
+  tempMax,
+  precipitationChange,
+  sunriseTime,
+  sunsetTime,
+}) {
+  return `
+    <div class="weather-card">
+      <li>
+        <span class="weather-icon"><img src="https://openweathermap.org/img/wn/${weatherIcon}@2x.png"/></span>
+        <span class="weather-day"><h2>${dayOfWeek}</h2></span>
+        <span class="yes-paint"><p>${shouldPaintDeck}</p></span><br/>
+        <span class="weather-temp">Temp: ${tempCurrent}° (Min: ${tempMin}° - Max: ${tempMax})°<br/></span>  
+        <span class="weather-pop">Precipitation chance: ${precipitationChange}%<br/></span>
+        <span class="weather-sunrise">Sunrise: ${sunriseTime} <br/></span>
+        <span class="weather-sunset">Sunset: ${sunsetTime}</span>
+      </li>
+    </div>
+  `;
+}
