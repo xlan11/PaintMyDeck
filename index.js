@@ -1,7 +1,7 @@
 const apiUrl =
   "https://api.openweathermap.org/data/2.5/onecall?lat=54.59&lon=5.93&units=metric&exclude=hourly,minutely&appid=25419fc66df6465e6d2c90e8f096f2f5";
 
-const dateFormatter = new Intl.DateTimeFormat("en-US", { weekday: "long" });
+const dateFormatter = new Intl.DateTimeFormat("en-US", { weekday: "long", month :"long", day: "numeric" });
 
 const dateFormatOptions = {
   timeZone: "GMT",
@@ -21,6 +21,7 @@ fetch(apiUrl)
 function getWeatherForecast(weeklyWeather) {
   return weeklyWeather.map((day) => {
     const currentDate = new Date(day.dt * 1000);
+    // console.log((Date(day.dt * 1000)))
     const sunriseTime = new Date(day.sunrise * 1000);
     const sunsetTime = new Date(day.sunset * 1000);
     let shouldPaintDeck = "";
