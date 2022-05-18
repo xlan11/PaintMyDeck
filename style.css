@@ -1,5 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap");
 
+/* Desktops and laptops ----------- */
+@media only screen
+and (min-width : 1224px) {
+  #container{
+    max-width: 800px;
+    margin:0 auto;
+  }
+  
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -8,6 +18,26 @@
 body {
   background-color: #edebd7;
   font-family: "Open Sans", sans-serif;
+}
+
+section {
+  width:800px;
+  margin:auto;
+  border-left: 1px solid #e3b23c;  
+  border-right: 1px solid #e3b23c;
+}
+
+footer {
+  margin:auto;
+  min-height:20px;
+  padding:20px;
+  background-color:#e3b23c;
+  text-align:right;
+}
+
+footer a {
+  color:#423e37;
+  text-decoration: none;
 }
 
 p {
@@ -20,10 +50,6 @@ h1 {
 
 h2 {
   margin-top: 0;
-}
-
-#container {
-  margin: 0;
 }
 
 ul {
@@ -47,9 +73,7 @@ ul li {
   border-radius: 5px;
   height: 100%;
   width: 350px;
-  box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
-    rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  box-shadow: 0 8px 6px -6px black;
 }
 
 .weather-icon {
@@ -62,7 +86,6 @@ ul li {
 
 button {
   cursor: pointer;
-  text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: bold;
   border: 1px solid #edebd7;

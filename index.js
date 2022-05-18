@@ -25,8 +25,11 @@ function getWeatherForecast(weeklyWeather) {
     const sunsetTime = new Date(day.sunset * 1000);
     let shouldPaintDeck = "";
 
-    if (day.pop * 100 < 25) {
-      shouldPaintDeck = "Today would be a good day to paint!";
+    if ((day.pop * 100 ) < 5) {
+      shouldPaintDeck = "Today would be a GREAT day to paint! 😍";
+    }
+    else if ((day.pop * 100) > 5 && (day.pop * 100) < 25){
+      shouldPaintDeck = "Today would be a good day to paint! 🙂"
     }
 
     return generateHtml({
