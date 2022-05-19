@@ -16,21 +16,21 @@ and (min-width : 1224px) {
 }
 
 body {
-  background-color: #edebd7;
+  background-color: #CFDEE7;
   font-family: "Open Sans", sans-serif;
 }
 
 section {
   margin:auto;
-  border-left: 1px solid #e3b23c;  
-  border-right: 1px solid #e3b23c;
+  border-left: 1px solid #CFDEE7;  
+  border-right: 1px solid #CFDEE7;
 }
 
 footer {
   margin:auto;
   min-height:20px;
   padding:20px;
-  background-color:#e3b23c;
+  background-color:#4472CA;
   text-align:right;
 }
 
@@ -40,11 +40,12 @@ footer a {
 }
 
 p {
-  color: #edebd7;
+  color: #fff;
 }
 h1 {
-  color: #423e37;
+  color: #fff;
   font-family: "Roboto", sans-serif;
+  font-size:16px;
 }
 
 h2 {
@@ -60,14 +61,14 @@ ul {
 }
 
 ul li {
-  color: #423e37;
+  color: #fff;
   font-size: 12px;
   padding: 15px;
   text-align: left;
 }
 
 .weather-card {
-  background-color: #e3b23c;
+  background-color: #4472CA;
   margin: 15px;
   border-radius: 5px;
   height: 100%;
@@ -88,11 +89,11 @@ button {
   letter-spacing: 1px;
   font-weight: bold;
   border: 1px solid #edebd7;
-  background-color: #edebd7;
+  background-color: #92B4F4;
 }
 
 button:hover {
-  background-color: #e3b23c;
+  background-color: #CFDEE7;
   border: 1px solid #423e37;
 }
 
@@ -102,7 +103,7 @@ input {
   border-top: 0;
   border-right: 0;
   border-bottom: 1px solid #edebd7;
-  background-color: #e3b23c;
+  background-color: #92B4F4;
 }
 
 ::placeholder {
@@ -117,7 +118,7 @@ input {
 }
 
 .top-banner {
-  background-color: #e3b23c;
+  background-color: #5E7CE2;
   display: flex;
   justify-content: center;
   padding: 10px 0 10px 0px;
